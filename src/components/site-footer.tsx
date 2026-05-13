@@ -1,10 +1,29 @@
 import Link from "next/link";
+import { FaFacebook, FaGithub, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 const socialLinks = [
-  { href: "https://www.linkedin.com", label: "LinkedIn" },
-  { href: "https://github.com", label: "GitHub" },
-  { href: "https://x.com", label: "X / Twitter" },
-];
+  {
+    href: "https://github.com/mihajamikalo/",
+    label: "GitHub",
+    icon: FaGithub,
+  },
+  {
+    href: "https://wa.me/261341970025",
+    label: "WhatsApp",
+    icon: FaWhatsapp,
+  },
+  {
+    href: "https://web.facebook.com/Tiavina.liantsoa2",
+    label: "Facebook",
+    icon: FaFacebook,
+  },
+  {
+    href: "https://www.instagram.com/tiavina_liantsoaa?igsh=bnZucjEwNXFwMm40",
+    label: "Instagram",
+    icon: FaInstagram,
+  },
+] satisfies { href: string; label: string; icon: IconType }[];
 
 export default function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -20,8 +39,9 @@ export default function SiteFooter() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="font-medium text-blue-800 transition hover:text-soft-blue"
+                className="inline-flex items-center gap-1.5 font-medium text-blue-800 transition hover:text-soft-blue"
               >
+                <item.icon className="text-sm" aria-hidden />
                 {item.label}
               </Link>
             </li>

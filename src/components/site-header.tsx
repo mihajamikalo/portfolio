@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -30,6 +31,9 @@ export default function SiteHeader() {
             >
               Download Resume
             </Link>
+          </li>
+          <li>
+            <ThemeToggle />
           </li>
         </ul>
       </nav>

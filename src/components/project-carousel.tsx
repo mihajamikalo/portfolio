@@ -30,7 +30,7 @@ export default async function ProjectCarousel() {
                     {project.stack.slice(0, 3).map((tech) => (
                       <li
                         key={`${groupIndex}-${project.title}-${tech}`}
-                        className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-900"
+                        className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-black"
                       >
                         {tech}
                       </li>

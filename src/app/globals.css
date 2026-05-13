@@ -8,6 +8,14 @@
   --muted-blue: #dce8ff;
 }
 
+html.dark {
+  --background: #0c1426;
+  --foreground: #e7efff;
+  --surface: #121d35;
+  --soft-blue: #8baeff;
+  --muted-blue: #1f315e;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -26,6 +34,42 @@ body {
 
 * {
   scroll-behavior: smooth;
+}
+
+html.dark body {
+  background: linear-gradient(180deg, #0c1426 0%, #0b1221 100%);
+}
+
+html.dark .bg-white,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90,
+html.dark .bg-white\/85 {
+  background-color: #121d35 !important;
+}
+
+html.dark .bg-blue-50\/70,
+html.dark .bg-blue-50\/60,
+html.dark .bg-blue-50\/50,
+html.dark .bg-blue-100 {
+  background-color: #1a2950 !important;
+}
+
+html.dark .border-blue-100,
+html.dark .border-blue-200 {
+  border-color: #2a3f73 !important;
+}
+
+html.dark .text-blue-950,
+html.dark .text-blue-900,
+html.dark .text-blue-900\/80,
+html.dark .text-blue-900\/75,
+html.dark .text-blue-900\/70,
+html.dark .text-blue-800 {
+  color: #dbe8ff !important;
+}
+
+html.dark .text-blue-700 {
+  color: #a9c4ff !important;
 }
 
 @keyframes project-carousel-scroll {

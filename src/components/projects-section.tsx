@@ -24,7 +24,7 @@ export default async function ProjectsSection() {
             {project.stack.map((tech) => (
               <li
                 key={`${project.title}-${tech}`}
-                className="rounded-full bg-muted-blue px-3 py-1 text-xs font-medium text-blue-900"
+                className="rounded-full bg-white px-3 py-1 text-xs font-medium text-black"
               >
                 {tech}
               </li>

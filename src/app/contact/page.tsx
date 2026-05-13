@@ -1,3 +1,5 @@
+import { FaFacebook, FaGithub, FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 export default function ContactPage() {
   return (
     <section className="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
@@ -5,7 +7,7 @@ export default function ContactPage() {
       <p className="mt-3 text-blue-900/80">
         Let&apos;s discuss your next project or collaboration opportunity.
       </p>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <a
           href="mailto:mihajamikalo@gmail.com"
           className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue"
@@ -20,20 +22,53 @@ export default function ContactPage() {
           <p className="text-sm text-blue-700">Phone</p>
           <p className="mt-1 font-semibold text-blue-950">+261 34 19 700 25</p>
         </a>
-        <div className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue">
-          <p className="text-sm text-blue-700">Address</p>
-          <p className="mt-1 font-semibold text-blue-950">
-            LOT IVI 73 Antanety Nord Ambohimanarina
+        <a
+          href="https://wa.me/261341970025"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue"
+        >
+          <p className="inline-flex items-center gap-1.5 text-sm text-blue-700">
+            <FaWhatsapp className="text-base" aria-hidden />
+            Whatsapp
           </p>
-        </div>
+          <p className="mt-1 font-semibold text-blue-950">Chat on WhatsApp</p>
+        </a>
         <a
           href="https://github.com/mihajamikalo"
           target="_blank"
           rel="noreferrer"
           className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue"
         >
-          <p className="text-sm text-blue-700">GitHub</p>
+          <p className="inline-flex items-center gap-1.5 text-sm text-blue-700">
+            <FaGithub className="text-base" aria-hidden />
+            GitHub
+          </p>
           <p className="mt-1 font-semibold text-blue-950">github.com/mihajamikalo</p>
+        </a>
+        <a
+          href="https://web.facebook.com/Tiavina.liantsoa2"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue"
+        >
+          <p className="inline-flex items-center gap-1.5 text-sm text-blue-700">
+            <FaFacebook className="text-base" aria-hidden />
+            Facebook
+          </p>
+          <p className="mt-1 font-semibold text-blue-950">Tiavina.liantsoa2</p>
+        </a>
+        <a
+          href="https://www.instagram.com/tiavina_liantsoaa?igsh=bnZucjEwNXFwMm40"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-2xl border border-blue-100 bg-blue-50/70 p-4 transition hover:border-soft-blue"
+        >
+          <p className="inline-flex items-center gap-1.5 text-sm text-blue-700">
+            <FaInstagram className="text-base" aria-hidden />
+            Instagram
+          </p>
+          <p className="mt-1 font-semibold text-blue-950">@tiavina_liantsoaa</p>
         </a>
       </div>
     </section>
