@@ -49,7 +49,7 @@ export default function Home() {
         </div>
         <div className="justify-self-center overflow-hidden rounded-3xl bg-white p-3 shadow-[0_22px_55px_rgba(29,78,216,0.2)] ring-1 ring-blue-100">
           <Image
-            src="/tiavina-profile.png"
+            src="/tiavina-profile-v2.png"
             alt="Portrait of Santatriniaina Tiavina Liantsoa"
             width={380}
             height={500}

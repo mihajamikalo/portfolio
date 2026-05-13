@@ -33,7 +33,6 @@ export default function ThemeToggle() {
   function toggleTheme() {
     const nextTheme: Theme = theme === "light" ? "dark" : "light";
     setTheme(nextTheme);
-    applyTheme(nextTheme);
   }
 
   return (
@@ -42,6 +41,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="rounded-full border border-blue-200 px-4 py-2 text-xs font-semibold text-blue-900 transition hover:border-soft-blue sm:text-sm"
       aria-label="Toggle dark mode"
+      suppressHydrationWarning
     >
       {theme === "light" ? "Dark Mode" : "Light Mode"}
     </button>
