@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "title": "FlyParty",
+      "description": "Personal project focused on online event ticket purchase and booking experience.",
+      "stack": ["PHP", "MySQL", "HTML", "CSS"],
+      "link": "https://flyparty.great-site.net"
+    },
+    {
+      "title": "MeetMe",
+      "description": "Personal project based on a social dating platform with user interactions.",
+      "stack": ["Node.js", "React.js", "MySQL"],
+      "link": "https://github.com/mihajamikalo/MeetMe"
+    },
+    {
+      "title": "MedocMada",
+      "description": "Final project for traditional medicine sales with product catalog and management features.",
+      "stack": ["Laravel", "MySQL", "Bootstrap"],
+      "link": "https://github.com/mihajamikalo/MedocMada"
+    },
+    {
+      "title": "ESCM Website",
+      "description": "University showcase website built with WordPress for ESCM Business School.",
+      "stack": ["WordPress", "PHP", "MySQL"],
+      "link": "https://www.escm.mg"
+    },
+    {
+      "title": "Gibbon School ERP",
+      "description": "School management platform setup for staff, parents, and students using Gibbon open source.",
+      "stack": ["Gibbon", "PHP", "MySQL"],
+      "link": "#"
+    }
+  ],
+  "stack": [
+    "HTML",
+    "CSS",
+    "PHP",
+    "Laravel",
+    "CodeIgniter",
+    "MySQL",
+    "Python",
+    "Node.js",
+    "React.js",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Bootstrap",
+    "WordPress"
+  ],
+  "cursus": [
+    {
+      "period": "2023",
+      "title": "Baccalaureat",
+      "description": "Lycee Privee Edenah Ambohimanarina."
+    },
+    {
+      "period": "2025 - En cours",
+      "title": "Licence Informatique et Management",
+      "description": "ESPIC Antananarivo Ankazomanga."
+    },
+    {
+      "period": "Jan 2024 - Apr 2024",
+      "title": "Developpeur PHP et Laravel (Freelance)",
+      "description": "Developpement full-stack sur des projets web en PHP/Laravel."
+    },
+    {
+      "period": "Jan 2025 - Apr 2025",
+      "title": "Entrainement A.I Data (Freelance)",
+      "description": "Contribution a des taches de data training pour modeles A.I."
+    },
+    {
+      "period": "Nov 2024 - Mar 2025",
+      "title": "Stagiaire Developpeur Full-Stack - ESCM Business School",
+      "description": "Developpement WordPress, gestion reseaux, et mise en place de Gibbon School Management."
+    },
+    {
+      "period": "Mar 2025 - Present",
+      "title": "Consultant Developpeur Full-Stack - ESCM Business School",
+      "description": "Gestion du site web et creation d'un CRM pour l'ecole."
+    }
+  ],
+  "feedback": [
+    {
+      "quote": "The website was delivered with premium quality, clean code, and excellent performance on all devices.",
+      "name": "Sarah M.",
+      "role": "Product Manager, Fintech Startup"
+    },
+    {
+      "quote": "Very professional collaboration. Communication was clear and the final product exceeded expectations.",
+      "name": "David K.",
+      "role": "Founder, E-commerce Brand"
+    },
+    {
+      "quote": "Fast delivery, strong design sense, and a very reliable technical partner for long-term projects.",
+      "name": "Nina L.",
+      "role": "Marketing Lead, SaaS Company"
+    }
+  ]
+}
