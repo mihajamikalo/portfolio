@@ -1,4 +1,64 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+
 export default function SendMessageForm() {
+  const [loading, setLoading] = useState(false);
+  const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus(null);
+    setLoading(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      fullName: String(formData.get("fullName") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      subject: String(formData.get("subject") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      website: String(formData.get("website") ?? ""),
+      startedAt: formStartedAt,
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        setStatus({
+          type: "error",
+          message: data.message ?? "Unable to send message.",
+        });
+        return;
+      }
+
+      form.reset();
+      setFormStartedAt(Date.now());
+      setStatus({
+        type: "success",
+        message: "Message sent successfully. I will get back to you soon.",
+      });
+    } catch {
+      setStatus({
+        type: "error",
+        message: "Network error. Please try again.",
+      });
+    } finally {
+      setFormStartedAt(Date.now());
+      setLoading(false);
+    }
+  }
+
   return (
     <section className="mt-12 rounded-3xl border border-blue-100 bg-white/95 p-6 shadow-sm sm:p-8">
       <h2 className="text-2xl font-bold text-blue-950">Send Message</h2>
@@ -6,7 +66,15 @@ export default function SendMessageForm() {
         Share your project idea or collaboration request.
       </p>
 
-      <form className="mt-6 grid gap-4 sm:grid-cols-2" action="#" method="post">
+      <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
         <label className="flex flex-col gap-2 text-sm font-medium text-blue-900">
           Full Name
           <input
@@ -54,10 +122,18 @@ export default function SendMessageForm() {
         <div className="sm:col-span-2">
           <button
             type="submit"
-            className="rounded-full bg-soft-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+            disabled={loading}
+            className="rounded-full bg-soft-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
+          {status ? (
+            <p
+              className={`mt-3 text-sm ${status.type === "success" ? "text-green-600" : "text-red-600"}`}
+            >
+              {status.message}
+            </p>
+          ) : null}
         </div>
       </form>
     </section>
