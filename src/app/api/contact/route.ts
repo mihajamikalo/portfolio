@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const contactToEmail = process.env.CONTACT_TO_EMAIL ?? "mihajamikalo@gmail.com";
-const contactFromEmail =
-  process.env.CONTACT_FROM_EMAIL ?? "Portfolio Contact <onboarding@resend.dev>";
+const contactFromEmail = (
+  process.env.CONTACT_FROM_EMAIL ?? "Portfolio Contact <onboarding@resend.dev>"
+)
+  .trim()
+  .replace(/^['"]+|['"]+$/g, "");
 const MIN_FORM_FILL_MS = 2500;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const MAX_MESSAGES_PER_WINDOW = 5;
