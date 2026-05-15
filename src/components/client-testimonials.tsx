@@ -1,13 +1,24 @@
 import { getPortfolioContent } from "@/lib/content";
+import type { Locale } from "@/lib/locale";
 
-export default async function ClientTestimonials() {
+type ClientTestimonialsProps = {
+  locale: Locale;
+};
+
+export default async function ClientTestimonials({ locale }: ClientTestimonialsProps) {
   const { feedback: testimonials } = await getPortfolioContent();
 
   return (
     <section className="mt-12 rounded-3xl border border-blue-100 bg-white/95 p-6 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-blue-950">What my previous client said</h2>
+      <h2 className="text-2xl font-bold text-blue-950">
+        {locale === "fr"
+          ? "Ce que disent mes anciens clients"
+          : "What my previous client said"}
+      </h2>
       <p className="mt-2 text-sm text-blue-900/75 sm:text-base">
-        Feedback from recent collaborations and delivered projects.
+        {locale === "fr"
+          ? "Retours sur des collaborations recentes et des projets livres."
+          : "Feedback from recent collaborations and delivered projects."}
       </p>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-3">

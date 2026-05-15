@@ -1,13 +1,22 @@
 import { getPortfolioContent } from "@/lib/content";
+import type { Locale } from "@/lib/locale";
 
-export default async function ProjectCarousel() {
+type ProjectCarouselProps = {
+  locale: Locale;
+};
+
+export default async function ProjectCarousel({ locale }: ProjectCarouselProps) {
   const { projects } = await getPortfolioContent();
 
   return (
     <section className="mt-10">
-      <h2 className="text-2xl font-bold text-blue-950">Featured Projects</h2>
+      <h2 className="text-2xl font-bold text-blue-950">
+        {locale === "fr" ? "Projets en vedette" : "Featured Projects"}
+      </h2>
       <p className="mt-2 text-sm text-blue-900/75 sm:text-base">
-        Auto-scrolling preview of recent work. Hover to pause.
+        {locale === "fr"
+          ? "Apercu auto-defilant des travaux recents. Survolez pour mettre en pause."
+          : "Auto-scrolling preview of recent work. Hover to pause."}
       </p>
       <div className="mt-5 overflow-hidden rounded-3xl border border-blue-100 bg-white/90 p-3 shadow-sm">
         <div className="project-carousel-track">

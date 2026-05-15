@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { Locale } from "@/lib/locale";
 
 type ContributionDay = {
   date: string;
@@ -21,6 +22,10 @@ type ApiPayload =
 
 const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 
+type GithubContributionGraphProps = {
+  locale: Locale;
+};
+
 function getContributionColorClass(count: number, maxCount: number): string {
   if (count === 0) return "contribution-cell-0";
 
@@ -31,7 +36,7 @@ function getContributionColorClass(count: number, maxCount: number): string {
   return "contribution-cell-1";
 }
 
-export default function GithubContributionGraph() {
+export default function GithubContributionGraph({ locale }: GithubContributionGraphProps) {
   const [data, setData] = useState<ApiPayload | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,7 +56,10 @@ export default function GithubContributionGraph() {
         if (!active) return;
         setData({
           ok: false,
-          message: "Could not load the GitHub contribution graph.",
+          message:
+            locale === "fr"
+              ? "Impossible de charger le graphe de contributions GitHub."
+              : "Could not load the GitHub contribution graph.",
         });
       } finally {
         if (active) {
@@ -67,7 +75,7 @@ export default function GithubContributionGraph() {
       active = false;
       window.clearInterval(interval);
     };
-  }, []);
+  }, [locale]);
 
   const maxCount = useMemo(() => {
     if (!data || !data.ok) return 0;
@@ -77,13 +85,23 @@ export default function GithubContributionGraph() {
 
   return (
     <section className="mt-12 rounded-3xl border border-blue-100 bg-white/95 p-6 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-blue-950">Github contribution graph</h2>
+      <h2 className="text-2xl font-bold text-blue-950">
+        {locale === "fr" ? "Graphe des contributions GitHub" : "Github contribution graph"}
+      </h2>
       <p className="mt-1 text-sm text-blue-900/75 sm:text-base">
-        {data?.ok ? `${data.totalContributions} contributions this year` : "Loading totals..."}
+        {data?.ok
+          ? locale === "fr"
+            ? `${data.totalContributions} contributions cette annee`
+            : `${data.totalContributions} contributions this year`
+          : locale === "fr"
+            ? "Chargement du total..."
+            : "Loading totals..."}
       </p>
 
       {isLoading ? (
-        <p className="mt-4 text-sm text-blue-900/75">Loading contribution graph...</p>
+        <p className="mt-4 text-sm text-blue-900/75">
+          {locale === "fr" ? "Chargement du graphe de contributions..." : "Loading contribution graph..."}
+        </p>
       ) : null}
 
       {!isLoading && data && !data.ok ? (
@@ -103,8 +121,12 @@ export default function GithubContributionGraph() {
                         day.contributionCount,
                         maxCount,
                       )}`}
-                      title={`${day.date}: ${day.contributionCount} contribution${
-                        day.contributionCount > 1 ? "s" : ""
+                      title={`${day.date}: ${day.contributionCount} ${
+                        locale === "fr"
+                          ? day.contributionCount > 1
+                            ? "contributions"
+                            : "contribution"
+                          : `contribution${day.contributionCount > 1 ? "s" : ""}`
                       }`}
                     />
                   ))}
@@ -114,7 +136,9 @@ export default function GithubContributionGraph() {
           </div>
 
           <p className="mt-4 text-xs text-blue-900/70">
-            Auto-refreshes every 5 minutes. Last update:{" "}
+            {locale === "fr"
+              ? "Actualisation automatique toutes les 5 minutes. Derniere mise a jour : "
+              : "Auto-refreshes every 5 minutes. Last update: "}
             {new Date(data.lastUpdated).toLocaleTimeString()}
           </p>
         </>

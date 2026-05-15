@@ -1,8 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import type { Locale } from "@/lib/locale";
 
-export default function SendMessageForm() {
+type SendMessageFormProps = {
+  locale: Locale;
+};
+
+export default function SendMessageForm({ locale }: SendMessageFormProps) {
   const [loading, setLoading] = useState(false);
   const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
   const [status, setStatus] = useState<{
@@ -37,7 +42,9 @@ export default function SendMessageForm() {
       if (!response.ok) {
         setStatus({
           type: "error",
-          message: data.message ?? "Unable to send message.",
+          message:
+            data.message ??
+            (locale === "fr" ? "Impossible d'envoyer le message." : "Unable to send message."),
         });
         return;
       }
@@ -46,12 +53,16 @@ export default function SendMessageForm() {
       setFormStartedAt(Date.now());
       setStatus({
         type: "success",
-        message: "Message sent successfully. I will get back to you soon.",
+        message:
+          locale === "fr"
+            ? "Message envoye avec succes. Je reviens vers vous bientot."
+            : "Message sent successfully. I will get back to you soon.",
       });
     } catch {
       setStatus({
         type: "error",
-        message: "Network error. Please try again.",
+        message:
+          locale === "fr" ? "Erreur reseau. Veuillez reessayer." : "Network error. Please try again.",
       });
     } finally {
       setFormStartedAt(Date.now());
@@ -61,9 +72,13 @@ export default function SendMessageForm() {
 
   return (
     <section className="mt-12 rounded-3xl border border-blue-100 bg-white/95 p-6 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-blue-950">Send Message</h2>
+      <h2 className="text-2xl font-bold text-blue-950">
+        {locale === "fr" ? "Envoyer un message" : "Send Message"}
+      </h2>
       <p className="mt-2 text-sm text-blue-900/75 sm:text-base">
-        Share your project idea or collaboration request.
+        {locale === "fr"
+          ? "Partagez votre idee de projet ou votre demande de collaboration."
+          : "Share your project idea or collaboration request."}
       </p>
 
       <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={handleSubmit}>
@@ -76,12 +91,12 @@ export default function SendMessageForm() {
           aria-hidden="true"
         />
         <label className="flex flex-col gap-2 text-sm font-medium text-blue-900">
-          Full Name
+          {locale === "fr" ? "Nom complet" : "Full Name"}
           <input
             type="text"
             name="fullName"
             required
-            placeholder="Your full name"
+            placeholder={locale === "fr" ? "Votre nom complet" : "Your full name"}
             className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3 text-sm outline-none transition focus:border-soft-blue focus:bg-white"
           />
         </label>
@@ -98,23 +113,23 @@ export default function SendMessageForm() {
         </label>
 
         <label className="flex flex-col gap-2 text-sm font-medium text-blue-900 sm:col-span-2">
-          Subject
+          {locale === "fr" ? "Sujet" : "Subject"}
           <input
             type="text"
             name="subject"
             required
-            placeholder="Project discussion"
+            placeholder={locale === "fr" ? "Discussion de projet" : "Project discussion"}
             className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3 text-sm outline-none transition focus:border-soft-blue focus:bg-white"
           />
         </label>
 
         <label className="flex flex-col gap-2 text-sm font-medium text-blue-900 sm:col-span-2">
-          Message
+          {locale === "fr" ? "Message" : "Message"}
           <textarea
             name="message"
             required
             rows={5}
-            placeholder="Write your message..."
+            placeholder={locale === "fr" ? "Ecrivez votre message..." : "Write your message..."}
             className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3 text-sm outline-none transition focus:border-soft-blue focus:bg-white"
           />
         </label>
@@ -125,7 +140,13 @@ export default function SendMessageForm() {
             disabled={loading}
             className="rounded-full bg-soft-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {loading ? "Sending..." : "Send Message"}
+            {loading
+              ? locale === "fr"
+                ? "Envoi..."
+                : "Sending..."
+              : locale === "fr"
+                ? "Envoyer le message"
+                : "Send Message"}
           </button>
           {status ? (
             <p

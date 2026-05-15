@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { Locale } from "@/lib/locale";
 
 type Theme = "light" | "dark";
 
@@ -10,7 +11,11 @@ function applyTheme(theme: Theme) {
   localStorage.setItem("theme", theme);
 }
 
-export default function ThemeToggle() {
+type ThemeToggleProps = {
+  locale: Locale;
+};
+
+export default function ThemeToggle({ locale }: ThemeToggleProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === "undefined") {
       return "light";
@@ -40,10 +45,16 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       className="rounded-full border border-blue-200 px-4 py-2 text-xs font-semibold text-blue-900 transition hover:border-soft-blue sm:text-sm"
-      aria-label="Toggle dark mode"
+      aria-label={locale === "fr" ? "Basculer le mode sombre" : "Toggle dark mode"}
       suppressHydrationWarning
     >
-      {theme === "light" ? "Dark Mode" : "Light Mode"}
+      {theme === "light"
+        ? locale === "fr"
+          ? "Mode sombre"
+          : "Dark Mode"
+        : locale === "fr"
+          ? "Mode clair"
+          : "Light Mode"}
     </button>
   );
 }

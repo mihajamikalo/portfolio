@@ -1,4 +1,5 @@
 import { getPortfolioContent } from "@/lib/content";
+import type { Locale } from "@/lib/locale";
 import type { ProjectItem } from "@/types/content";
 
 async function getProjects(): Promise<ProjectItem[]> {
@@ -6,7 +7,11 @@ async function getProjects(): Promise<ProjectItem[]> {
   return content.projects;
 }
 
-export default async function ProjectsSection() {
+type ProjectsSectionProps = {
+  locale: Locale;
+};
+
+export default async function ProjectsSection({ locale }: ProjectsSectionProps) {
   const items = await getProjects();
 
   return (
@@ -34,7 +39,7 @@ export default async function ProjectsSection() {
             href={project.link}
             className="mt-5 inline-flex text-sm font-semibold text-soft-blue hover:text-blue-800"
           >
-            View details
+            {locale === "fr" ? "Voir details" : "View details"}
           </a>
         </article>
       ))}

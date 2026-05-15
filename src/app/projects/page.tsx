@@ -1,12 +1,19 @@
 import { Suspense } from "react";
 import ProjectsSection from "@/components/projects-section";
+import { getServerLocale } from "@/lib/server-locale";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const locale = await getServerLocale();
+
   return (
     <section>
-      <h1 className="text-3xl font-bold text-blue-950">Projects</h1>
+      <h1 className="text-3xl font-bold text-blue-950">
+        {locale === "fr" ? "Projets" : "Projects"}
+      </h1>
       <p className="mt-3 text-blue-900/75">
-        Selected work highlighting design quality, speed, and real-world impact.
+        {locale === "fr"
+          ? "Selection de realisations mettant en avant la qualite de design, la rapidite et l'impact reel."
+          : "Selected work highlighting design quality, speed, and real-world impact."}
       </p>
       <div className="mt-6">
         <Suspense
@@ -21,7 +28,7 @@ export default function ProjectsPage() {
             </div>
           }
         >
-          <ProjectsSection />
+          <ProjectsSection locale={locale} />
         </Suspense>
       </div>
     </section>

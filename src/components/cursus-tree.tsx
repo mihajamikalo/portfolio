@@ -1,13 +1,22 @@
 import { getPortfolioContent } from "@/lib/content";
+import type { Locale } from "@/lib/locale";
 
-export default async function CursusTree() {
+type CursusTreeProps = {
+  locale: Locale;
+};
+
+export default async function CursusTree({ locale }: CursusTreeProps) {
   const { cursus: cursusSteps } = await getPortfolioContent();
 
   return (
     <section className="mt-12 rounded-3xl border border-blue-100 bg-white/95 p-6 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-blue-950">Cursus Tree</h2>
+      <h2 className="text-2xl font-bold text-blue-950">
+        {locale === "fr" ? "Parcours" : "Cursus Tree"}
+      </h2>
       <p className="mt-2 text-sm text-blue-900/75 sm:text-base">
-        Academic and professional milestones that shaped my profile.
+        {locale === "fr"
+          ? "Etapes academiques et professionnelles qui ont construit mon profil."
+          : "Academic and professional milestones that shaped my profile."}
       </p>
 
       <ol className="mt-6 space-y-6">
