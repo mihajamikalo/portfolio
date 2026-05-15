@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import LanguageToggleFloating from "@/components/language-toggle-floating";
 import SiteFooter from "@/components/site-footer";
@@ -47,6 +48,7 @@ export default async function RootLayout({
         </main>
         <SiteFooter locale={locale} />
         <LanguageToggleFloating locale={locale} />
+        <SpeedInsights />
       </body>
     </html>
   );
