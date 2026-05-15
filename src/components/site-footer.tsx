@@ -31,7 +31,7 @@ export default function SiteFooter() {
   return (
     <footer className="mt-16 border-t border-blue-100 bg-white/95">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-5 py-6 text-sm text-blue-900/80 sm:flex-row sm:px-8">
-        <p>Copyright {currentYear} MyPortfolio. All rights reserved.</p>
+        <p>Copyright {currentYear} Tiavina Liantsoa. All rights reserved.</p>
         <ul className="flex flex-wrap items-center gap-4">
           {socialLinks.map((item) => (
             <li key={item.label}>

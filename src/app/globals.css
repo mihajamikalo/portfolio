@@ -104,3 +104,53 @@ html.dark .text-blue-700 {
     animation: none;
   }
 }
+
+.contribution-cell-0 {
+  background-color: #eff6ff;
+  border-color: #dbeafe;
+}
+
+.contribution-cell-1 {
+  background-color: #bfdbfe;
+  border-color: #bfdbfe;
+}
+
+.contribution-cell-2 {
+  background-color: #93c5fd;
+  border-color: #93c5fd;
+}
+
+.contribution-cell-3 {
+  background-color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+.contribution-cell-4 {
+  background-color: var(--soft-blue);
+  border-color: var(--soft-blue);
+}
+
+html.dark .contribution-cell-0 {
+  background-color: #052e16;
+  border-color: #14532d;
+}
+
+html.dark .contribution-cell-1 {
+  background-color: #166534;
+  border-color: #166534;
+}
+
+html.dark .contribution-cell-2 {
+  background-color: #15803d;
+  border-color: #15803d;
+}
+
+html.dark .contribution-cell-3 {
+  background-color: #16a34a;
+  border-color: #16a34a;
+}
+
+html.dark .contribution-cell-4 {
+  background-color: #22c55e;
+  border-color: #22c55e;
+}

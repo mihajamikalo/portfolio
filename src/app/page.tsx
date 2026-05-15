@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ClientTestimonials from "@/components/client-testimonials";
 import CursusTree from "@/components/cursus-tree";
+import GithubContributionGraph from "@/components/github-contribution-graph";
 import ProjectCarousel from "@/components/project-carousel";
 import SendMessageForm from "@/components/send-message-form";
 
@@ -60,6 +61,7 @@ export default function Home() {
       </section>
       <ProjectCarousel />
       <CursusTree />
+      <GithubContributionGraph />
       <SendMessageForm />
       <ClientTestimonials />
     </div>
